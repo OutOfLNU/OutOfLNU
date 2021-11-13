@@ -1,0 +1,24 @@
+// 失去焦点时检测
+weui.form.checkIfBlur('#form');
+// 表单提交
+document.querySelector('#formSubmitBtn').addEventListener('click', function () {
+    weui.form.validate('#form', function (error) {
+        console.log(error);
+        if (!error) {
+            var loading = weui.loading('登录中...');
+            setTimeout(function () {
+                loading.hide();
+            }, 1500);
+			document.querySelector('#sub_form').action="login_do.asp";
+			document.querySelector('#sub_form').method="post";
+			document.querySelector('#sub_form').submit();
+        }
+    });
+});
+//拦截安卓回退按钮
+//history.pushState(null, null, location.href);
+//window.addEventListener('popstate', function(event) {
+    //history.pushState(null, null, location.href );
+    //此处加入回退时你要执行的代码
+	//window.location.href="about:blank";
+///});
